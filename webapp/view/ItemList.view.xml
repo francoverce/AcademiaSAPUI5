@@ -1,0 +1,66 @@
+<mvc:View controllerName="com.softtek.aca20241q.controller.ItemList"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:c="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core">
+    <Page id="flexBox" showHeader="false" class="background-with-opacity2">
+
+        <HBox id="hbox" justifyContent="SpaceAround">
+
+            <VBox id="vbox0" class="padded-box">
+                <Button
+                    id="btnToggle"
+                    icon="sap-icon://menu2"
+                    press=".onCollapseExpandPress"
+                    class="padded-box"
+                />
+                <VBox id="vbox1" backgroundDesign="Solid" class="padded-box border-radius">
+                    <Label id="lblInstructivo1" text="Presione sobre una categoría para agregar un ítem,"/>
+                    <Label id="lblInstructivo2" text="o sobre un ítem para ver su detalle"/>
+                </VBox>
+                <tnt:NavigationList
+                    id="navList"
+                    width="320px"
+                    itemSelect=".onSelectionItem">
+                </tnt:NavigationList>
+            </VBox>
+
+            <FlexBox id="flexBoxCard" justifyContent="Center" alignItems="Center" renderType="Bare"/>
+
+        </HBox>
+
+        <Dialog id="helloDialog" resizable="false" draggable="true" class="dialog" icon="sap-icon://add-product" title="Agregar Item">
+            <VBox id="vboxDialog" justifyContent="SpaceAround">
+                <core:Icon id="closeIcon" src="sap-icon://message-error" color="red" size="20px" press=".handleClose" class="iconClose"/>
+                <VBox id="vboxDialog2" justifyContent="Center" alignItems="Center">
+                    <Input id="inpNombre" placeholder="Nombre" width="400px"/>
+                    <Input id="inpDescripcion" placeholder="Descripción" width="400px"/>
+                    <Input id="inpImagen" placeholder="URL de la imagen" width="400px"/>
+                    <Input id="inpPrecio" placeholder="Precio" width="400px"/>
+                </VBox>
+                <HBox id="hboxDialog" justifyContent="End">
+                    <core:Icon id="successIcon" src="sap-icon://message-success" color="green" size="30px" press=".handleAgregarItem" class="iconSuccess"/>
+                </HBox>
+            </VBox>
+        </Dialog>
+
+        <Dialog id="editDialog" resizable="false" draggable="true" class="dialog" icon="sap-icon://request">
+            <VBox id="vboxEditDialog" justifyContent="SpaceAround">
+                <core:Icon id="closeEditIcon" src="sap-icon://message-error" color="red" size="20px" press=".handleCloseEdit" class="iconClose"/>
+                <VBox id="vboxEditDialog2" justifyContent="Center" alignItems="Center">
+                    <Input id="inpEditNombre" width="400px"/>
+                    <Input id="inpEditDescripcion" width="400px"/>
+                    <Input id="inpEditImagen" width="400px"/>
+                    <Input id="inpEditPrecio" width="400px"/>
+                </VBox>
+                <HBox id="hboxEditDialog" justifyContent="End">
+                    <core:Icon id="successEditIcon" src="sap-icon://message-success" color="green" size="30px" press=".handleEditarItem" class="iconSuccess"/>
+                </HBox>
+            </VBox>
+        </Dialog>
+
+    </Page>
+</mvc:View>

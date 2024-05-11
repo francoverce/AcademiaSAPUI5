@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	height="100%">
+		<Dialog id="helloDialog" resizable="false" draggable="true"
+                class="dialog" icon="sap-icon://activity-items" title="Detalle de Factura">
+            <core:Icon id="btnClose" src="sap-icon://message-error" color="red" size="20px" press=".onDialogClose" class="iconClose"/>
+			<Table id="tblItems" mode="SingleSelectMaster" items="{path: 'facturaitems>/'}">
+                <columns>
+                    <Column id="colNombre">
+                        <Label id="lblNombre" text="Nombre"/>
+                    </Column>
+                    <Column id="colCantidad">
+                        <Label id="lblCantidad" text="Cantidad"/>
+                    </Column>                
+                    <Column id="colPrecio">
+                        <Label id="lblPrecio" text="Precio"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="collistit">
+                        <cells>
+                            <Text id="txtNombre" text="{facturaitems>NombreItem}"/>
+                            <Text id="txtCantidad" text="{facturaitems>Cantidad}"/>
+                            <Text id="txtPrecio" text="${facturaitems>PrecioItem}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+		</Dialog>
+</core:FragmentDefinition>

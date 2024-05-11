@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZACA1Q2024_CAFE_SRV" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Factura" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdFactura"/>
+                </Key>
+                <Property Name="IdFactura" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mesa" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Ficticio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Mozo" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Car.20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fecha" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Fecha" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hora" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Campo de tipo TIMS" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Total" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="2" sap:unicode="false" sap:label="Importe ML" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Observaciones" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Car.20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdMetodoPago" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToFacturaItemSet" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Factura_To_FacturaItem" FromRole="FromRole_Assoc_Factura_To_FacturaItem" ToRole="ToRole_Assoc_Factura_To_FacturaItem"/>
+                <NavigationProperty Name="ToMetodoPago" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_MetodoPago_To_Factura" FromRole="ToRole_Assoc_MetodoPago_To_Factura" ToRole="FromRole_Assoc_MetodoPago_To_Factura"/>
+            </EntityType>
+            <EntityType Name="Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdItem"/>
+                </Key>
+                <Property Name="IdItem" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Car.20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descripcion" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="128 caracteres" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Imagen" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="128 caracteres" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Precio" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="2" sap:unicode="false" sap:label="Importe ML" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descuento" Type="Edm.Decimal" Nullable="false" Precision="23" Scale="2" sap:unicode="false" sap:label="Ficticio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdCategoria" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToItemEtiquetaSet" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Item_To_ItemEtiqueta" FromRole="FromRole_Assoc_Item_To_ItemEtiqueta" ToRole="ToRole_Assoc_Item_To_ItemEtiqueta"/>
+                <NavigationProperty Name="ToFacturaItemSet" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Item_To_FacturaItem" FromRole="FromRole_Assoc_Item_To_FacturaItem" ToRole="ToRole_Assoc_Item_To_FacturaItem"/>
+                <NavigationProperty Name="ToCategoria" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Categoria_To_Item" FromRole="ToRole_Assoc_Categoria_To_Item" ToRole="FromRole_Assoc_Categoria_To_Item"/>
+            </EntityType>
+            <EntityType Name="FacturaItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdFactura"/>
+                    <PropertyRef Name="IdItem"/>
+                </Key>
+                <Property Name="IdFactura" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdItem" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Cantidad" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Ficticio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToFactura" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Factura_To_FacturaItem" FromRole="ToRole_Assoc_Factura_To_FacturaItem" ToRole="FromRole_Assoc_Factura_To_FacturaItem"/>
+                <NavigationProperty Name="ToItem" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Item_To_FacturaItem" FromRole="ToRole_Assoc_Item_To_FacturaItem" ToRole="FromRole_Assoc_Item_To_FacturaItem"/>
+            </EntityType>
+            <EntityType Name="Categoria" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdCategoria"/>
+                </Key>
+                <Property Name="IdCategoria" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Car.20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToItemSet" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Categoria_To_Item" FromRole="FromRole_Assoc_Categoria_To_Item" ToRole="ToRole_Assoc_Categoria_To_Item"/>
+            </EntityType>
+            <EntityType Name="Etiqueta" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdEtiqueta"/>
+                </Key>
+                <Property Name="IdEtiqueta" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="128" sap:unicode="false" sap:label="128 caracteres" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToItemEtiquetaSet" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Etiqueta_To_ItemEtiqueta" FromRole="FromRole_Assoc_Etiqueta_To_ItemEtiqueta" ToRole="ToRole_Assoc_Etiqueta_To_ItemEtiqueta"/>
+            </EntityType>
+            <EntityType Name="ItemEtiqueta" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdItem"/>
+                    <PropertyRef Name="IdEtiqueta"/>
+                </Key>
+                <Property Name="IdItem" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IdEtiqueta" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToItem" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Item_To_ItemEtiqueta" FromRole="ToRole_Assoc_Item_To_ItemEtiqueta" ToRole="FromRole_Assoc_Item_To_ItemEtiqueta"/>
+                <NavigationProperty Name="ToEtiqueta" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_Etiqueta_To_ItemEtiqueta" FromRole="ToRole_Assoc_Etiqueta_To_ItemEtiqueta" ToRole="FromRole_Assoc_Etiqueta_To_ItemEtiqueta"/>
+            </EntityType>
+            <EntityType Name="MetodoPago" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdMetodoPago"/>
+                </Key>
+                <Property Name="IdMetodoPago" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="7-Digit Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nombre" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Car.20" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="ToFacturaSet" Relationship="ZACA1Q2024_CAFE_SRV.Assoc_MetodoPago_To_Factura" FromRole="FromRole_Assoc_MetodoPago_To_Factura" ToRole="ToRole_Assoc_MetodoPago_To_Factura"/>
+            </EntityType>
+            <Association Name="Assoc_Categoria_To_Item" sap:content-version="1">
+                <End Type="ZACA1Q2024_CAFE_SRV.Categoria" Multiplicity="1" Role="FromRole_Assoc_Categoria_To_Item"/>
+                <End Type="ZACA1Q2024_CAFE_SRV.Item" Multiplicity="*" Role="ToRole_Assoc_Categoria_To_Item"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Categoria_To_Item">
+                        <PropertyRef Name="IdCategoria"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Categoria_To_Item">
+                        <PropertyRef Name="IdCategoria"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_MetodoPago_To_Factura" sap:content-version="1">
+                <End Type="ZACA1Q2024_CAFE_SRV.MetodoPago" Multiplicity="1" Role="FromRole_Assoc_MetodoPago_To_Factura"/>
+                <End Type="ZACA1Q2024_CAFE_SRV.Factura" Multiplicity="*" Role="ToRole_Assoc_MetodoPago_To_Factura"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_MetodoPago_To_Factura">
+                        <PropertyRef Name="IdMetodoPago"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_MetodoPago_To_Factura">
+                        <PropertyRef Name="IdMetodoPago"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Item_To_ItemEtiqueta" sap:content-version="1">
+                <End Type="ZACA1Q2024_CAFE_SRV.Item" Multiplicity="1" Role="FromRole_Assoc_Item_To_ItemEtiqueta"/>
+                <End Type="ZACA1Q2024_CAFE_SRV.ItemEtiqueta" Multiplicity="*" Role="ToRole_Assoc_Item_To_ItemEtiqueta"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Item_To_ItemEtiqueta">
+                        <PropertyRef Name="IdItem"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Item_To_ItemEtiqueta">
+                        <PropertyRef Name="IdItem"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Item_To_FacturaItem" sap:content-version="1">
+                <End Type="ZACA1Q2024_CAFE_SRV.Item" Multiplicity="1" Role="FromRole_Assoc_Item_To_FacturaItem"/>
+                <End Type="ZACA1Q2024_CAFE_SRV.FacturaItem" Multiplicity="*" Role="ToRole_Assoc_Item_To_FacturaItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Item_To_FacturaItem">
+                        <PropertyRef Name="IdItem"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Item_To_FacturaItem">
+                        <PropertyRef Name="IdItem"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Factura_To_FacturaItem" sap:content-version="1">
+                <End Type="ZACA1Q2024_CAFE_SRV.Factura" Multiplicity="1" Role="FromRole_Assoc_Factura_To_FacturaItem"/>
+                <End Type="ZACA1Q2024_CAFE_SRV.FacturaItem" Multiplicity="*" Role="ToRole_Assoc_Factura_To_FacturaItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Factura_To_FacturaItem">
+                        <PropertyRef Name="IdFactura"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Factura_To_FacturaItem">
+                        <PropertyRef Name="IdFactura"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Etiqueta_To_ItemEtiqueta" sap:content-version="1">
+                <End Type="ZACA1Q2024_CAFE_SRV.Etiqueta" Multiplicity="1" Role="FromRole_Assoc_Etiqueta_To_ItemEtiqueta"/>
+                <End Type="ZACA1Q2024_CAFE_SRV.ItemEtiqueta" Multiplicity="*" Role="ToRole_Assoc_Etiqueta_To_ItemEtiqueta"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Etiqueta_To_ItemEtiqueta">
+                        <PropertyRef Name="IdEtiqueta"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Etiqueta_To_ItemEtiqueta">
+                        <PropertyRef Name="IdEtiqueta"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZACA1Q2024_CAFE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="FacturaSet" EntityType="ZACA1Q2024_CAFE_SRV.Factura" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ItemSet" EntityType="ZACA1Q2024_CAFE_SRV.Item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FacturaItemSet" EntityType="ZACA1Q2024_CAFE_SRV.FacturaItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CategoriaSet" EntityType="ZACA1Q2024_CAFE_SRV.Categoria" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EtiquetaSet" EntityType="ZACA1Q2024_CAFE_SRV.Etiqueta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ItemEtiquetaSet" EntityType="ZACA1Q2024_CAFE_SRV.ItemEtiqueta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MetodoPagoSet" EntityType="ZACA1Q2024_CAFE_SRV.MetodoPago" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="Assoc_Categoria_To_ItemSet" Association="ZACA1Q2024_CAFE_SRV.Assoc_Categoria_To_Item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="CategoriaSet" Role="FromRole_Assoc_Categoria_To_Item"/>
+                    <End EntitySet="ItemSet" Role="ToRole_Assoc_Categoria_To_Item"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Item_To_FacturaItemSet" Association="ZACA1Q2024_CAFE_SRV.Assoc_Item_To_FacturaItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ItemSet" Role="FromRole_Assoc_Item_To_FacturaItem"/>
+                    <End EntitySet="FacturaItemSet" Role="ToRole_Assoc_Item_To_FacturaItem"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_MetodoPago_To_FacturaSet" Association="ZACA1Q2024_CAFE_SRV.Assoc_MetodoPago_To_Factura" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MetodoPagoSet" Role="FromRole_Assoc_MetodoPago_To_Factura"/>
+                    <End EntitySet="FacturaSet" Role="ToRole_Assoc_MetodoPago_To_Factura"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Factura_To_FacturaItemSet" Association="ZACA1Q2024_CAFE_SRV.Assoc_Factura_To_FacturaItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FacturaSet" Role="FromRole_Assoc_Factura_To_FacturaItem"/>
+                    <End EntitySet="FacturaItemSet" Role="ToRole_Assoc_Factura_To_FacturaItem"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Item_To_ItemEtiquetaSet" Association="ZACA1Q2024_CAFE_SRV.Assoc_Item_To_ItemEtiqueta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ItemSet" Role="FromRole_Assoc_Item_To_ItemEtiqueta"/>
+                    <End EntitySet="ItemEtiquetaSet" Role="ToRole_Assoc_Item_To_ItemEtiqueta"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Etiqueta_To_ItemEtiquetaSet" Association="ZACA1Q2024_CAFE_SRV.Assoc_Etiqueta_To_ItemEtiqueta" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="EtiquetaSet" Role="FromRole_Assoc_Etiqueta_To_ItemEtiqueta"/>
+                    <End EntitySet="ItemEtiquetaSet" Role="ToRole_Assoc_Etiqueta_To_ItemEtiqueta"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://stks4hpil.eastus2.cloudapp.azure.com:8002/sap/opu/odata/sap/ZACA1Q2024_CAFE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://stks4hpil.eastus2.cloudapp.azure.com:8002/sap/opu/odata/sap/ZACA1Q2024_CAFE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

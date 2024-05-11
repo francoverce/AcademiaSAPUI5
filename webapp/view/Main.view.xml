@@ -1,0 +1,44 @@
+<mvc:View controllerName="com.softtek.aca20241q.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt">
+    <Page id="main" showHeader="false" class="background-with-opacity">
+        <content>
+                <OverflowToolbar id="oft" design="Transparent">
+                    <ToolbarSpacer id="spacer1"/>
+                    <SegmentedButton id="segmentedBtn" selectedKey="btnToMain" class="segmented-button">
+                        <items>
+                            <SegmentedButtonItem id="btnToMain" text="Inicio" press="" class="btn-menu"/>
+                            <SegmentedButtonItem id="btnToItemList" text="Items" press=".onNavToItemList" class="btn-menu"/>
+                            <!-- <SegmentedButtonItem id="btnToEtiquetas" text="Etiquetas" press=".onNavToEtiquetas" class="btn-menu"/> -->
+                            <!-- <SegmentedButtonItem id="btnToCategorias" text="Categorias" press=".onNavToCategorias" class="btn-menu"/> -->
+                            <SegmentedButtonItem id="btnToFacturas" text="Facturas" press=".onNavToFacturas" class="btn-menu"/>
+                            <!-- <SegmentedButtonItem id="btnToMetodosPago" text="Metodos de Pago" press=".onNavToMetodosPago" class="btn-menu"/> -->
+                        </items>
+                    </SegmentedButton>
+                    <ToolbarSpacer id="spacer2"/>
+                </OverflowToolbar>
+            <VBox id="scrContainer" class="screen-container">
+                <VBox id="menuContainer" class="menu-container">
+                    <Label id="lblMesa" text="Mesa" class="label"/>
+                    <Input id="inpMesa" width="5%"/>
+                    <Label id="lblMozo" text="Mozo" class="label"/>
+                    <Input id="inpMozo" />
+                    <HBox id="hboxIcon" justifyContent="End" alignItems="Center" width="90%">
+                        <Text id="txtContinuar" text="Iniciar Factura" class="title-text white-text padded-box"/>
+                        <core:Icon
+                            id="btnContinuar"
+                            src="sap-icon://initiative"
+                            size="40px"
+                            color="#FFFFFF"
+                            class="icon"
+                            press=".onContinuarPress"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

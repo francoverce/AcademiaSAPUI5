@@ -1,0 +1,139 @@
+<mvc:View controllerName="com.softtek.aca20241q.controller.FacturaItem"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt"
+    xmlns:table="sap.ui.table">
+
+    <FlexBox id="flexBox" justifyContent="SpaceBetween" alignItems="Start" class="background-with-opacity" height="100vh">
+        <items>
+
+            <VBox id="vbox0" class="padded-box">
+                <Button
+                    id="btnToggle"
+                    icon="sap-icon://menu2"
+                    press=".onCollapseExpandPress"
+                />
+                <tnt:NavigationList
+                    id="navList"
+                    width="320px"
+                    itemSelect=".onSelectionItem">
+                </tnt:NavigationList>
+            </VBox>
+
+                <VBox id="vbox2"> 
+                    <Table id="tblItems" mode="SingleSelectMaster" class="factura-item-table padded-table">
+                        <columns>
+                            <Column id="colImagen"/>
+                            <Column id="colNombre">
+                                <Label id="lblNombre" text="Item"/>
+                            </Column>
+                            <Column id="colCantidad">
+                                <Label id="lblCantidad" text="Cantidad"/>
+                            </Column>
+                            <Column id="colPrecio">
+                                <Label id="lblPrecio" text="Precio"/>
+                            </Column>
+                            <Column id="colBorrar"/>
+                        </columns>
+                    </Table>
+                </VBox>
+
+                <VBox id="vboxIcon" justifyContent="Center" height="100vh">
+                    <core:Icon
+                        id="btnToggleVbox1"
+
+                        size="40px"
+                        color="#000000"
+                        class="icon"
+                        press=".onToggleVbox1Press"
+                    />
+                    <Text id="txtDetalle" text="Detalle" class="detalle-text" />
+                </VBox>
+
+                <VBox id="vbox1" class="factura-item-table white-box-opacity" visible="false" >
+
+                    <VBox id="vboxMesa" alignItems="Center">
+                        <Label id="lblMesa" text="Mesa"/>
+                        <Text id="txtMesa"/>
+                    </VBox>
+                    <VBox id="vboxMozo" alignItems="Center">
+                        <Label id="lblMozo" text="Mozo"/>
+                        <Text id="txtMozo"/>
+                    </VBox>
+
+                    <VBox id="vboxMetodoPago" alignItems="Center">                
+                        <Label id="lblMetodoPago" text="Método de Pago"/>
+                        <ComboBox
+                            id="comboBox"
+                            items="{
+                                path: 'comboBox>/',
+                                sorter: { path: 'text' }
+                            }"
+                            selectionChange=".onMetodoPagoChange">
+                            <core:Item id="item" key="{comboBox>key}" text="{comboBox>text}" />
+                        </ComboBox>
+                        <Link id="btnMetodoPago" text="Editar Métodos de Pago" press=".handleOpen" />
+                    </VBox>
+
+                    <VBox id="vboxTotal" alignItems="Center">
+                        <Label id="lblTotal" text="Total" class="total-txt"/>
+                        <HBox id="hboxTotal" justifyContent="Center" alignItems="Start" class="padded-box">
+                            <Text id="txtPesos" text="$" class="total-txt"/>
+                            <Text id="txtTotal" text="{viewModel>/total}" class="total-txt"/>
+                        </HBox>
+                    </VBox>
+                    <VBox id="hboxContinuar" justifyContent="End" alignItems="Center" class="padded-box">
+                    <Text id="txtFinalizar" text="Finalizar" class="finalizar-text"/>
+                        <core:Icon
+                            id="btnContinuar"
+                            src="sap-icon://message-success"
+                            size="50px"
+                            color="green"
+                            class="icon"
+                            press=".onContinuarPress"/>
+                        
+                    </VBox>
+                </VBox>
+
+                <Dialog id="helloDialog" resizable="false" draggable="true"
+                        class="dialog" icon="sap-icon://batch-payments" title="Editar Métodos de Pago">
+                    <HBox id="hboxDialog" justifyContent="SpaceAround" alignItems="Center">
+                        <core:Icon id="btnClose" src="sap-icon://message-error" color="red" size="20px" press=".handleClose" class="iconClose"/>
+                        <Input id="inpMetodoPago"
+                                placeholder="Ingrese un método de pago y seleccione agregar o editar"
+                                width="400px"
+                                ariaLabelledBy="InputRequiredLabel"
+                        />
+                        <core:Icon id="btnAdd" src="sap-icon://sys-add" color="green" size="30px" press=".handleAgregarMetodoPago" class="iconSuccess"/>
+                    </HBox>
+                    <Table id="tblDialog" mode="SingleSelectMaster" items="{path: 'metodosPago>/'}">
+                        <columns>
+                            <Column id="colNombreMetodoPago">
+                                <Label id="lblNombreMetodoPago" text="Método de Pago"/>
+                            </Column>
+                            <Column id="colBorrarMetodoPago">
+                            </Column>                
+                        </columns>
+                        <items>
+                            <ColumnListItem id="collistit">
+                                <cells>
+                                    <Text id="txtNombreMetodoPago" text="{metodosPago>Nombre}"/>
+                                    <core:Icon
+                                        id="editIcon"
+                                        src="sap-icon://edit"
+                                        size="25px"
+                                        color="blue"
+                                        class="icon"
+                                        press=".onPressEditar" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Dialog>
+        </items>
+    </FlexBox>
+
+</mvc:View>

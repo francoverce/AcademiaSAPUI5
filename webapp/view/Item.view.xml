@@ -1,0 +1,43 @@
+<mvc:View controllerName="com.softtek.aca20241q.controller.Item"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    <Page id="page" title="{Nombre}">
+        <content>
+            <VBox id="vbox1" class="item-container">
+                <VBox id="vbox2">
+                    <Image id="img" src="{Imagen}" class="imgItem"/>
+                    <Text id="txtNombre" text="{Nombre}" class="title-text"/>
+                    <Text id="txtCategoria" text="{IdCategoria}" class="subtitle-text"/>
+                </VBox>
+                <VBox id="vbox3" class = "item-description">
+                    <Text id="txtDescripcion" text="{Descripcion}" class="subtitle-text"/>
+                    <Text id="txtDescuento" text="Descuento: ${Descuento}" class="subtitle-text"/>
+                </VBox>
+                <VBox id="vbox4" justifyContent="End">
+                    <Text id="txtPrecio" text="${Precio}" class="title-text"/>
+                </VBox>
+                <VBox id="vbox5" class="item-container">
+                    <core:Icon
+                        id="editIcon"
+                        src="sap-icon://edit"
+                        size="25px"
+                        color="#031E48"
+                        class="icon"
+                        press=".onPressEditar" />
+                    <core:Icon
+                        id="deleteIcon"
+                        src="sap-icon://delete"
+                        size="25px"
+                        color="#031E48"
+                        class="icon"
+                        press=".onPressEliminar" />
+                </VBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
+
+  

@@ -1,0 +1,59 @@
+<mvc:View controllerName="com.softtek.aca20241q.controller.FacturaList"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tnt="sap.tnt">
+    <Page id="facturas" title="Facturas">
+        <VBox id="vboxMetodoPago" alignItems="Center" class="padded-box">                
+            <Label id="lblMetodoPagoCombo" text="Filtrar por Método de Pago"/>
+            <ComboBox
+                id="comboBox"
+                items="{
+                    path: 'comboBox>/',
+                    sorter: { path: 'text' }
+                }"
+                showClearIcon="true"
+                selectionChange=".onMetodoPagoChange">
+                <core:Item id="item" key="{comboBox>key}" text="{comboBox>text}" />
+            </ComboBox>
+        </VBox>
+        <content>
+            <Table id="tblFacturas" mode="SingleSelectMaster" items="{path: 'facturas>/'}" selectionChange=".onSelectionItem">
+                <columns>
+                    <Column id="colFecha">
+                        <Label id="lblFecha" text="Fecha"/>
+                    </Column>
+                    <Column id="colHora">
+                        <Label id="lblHora" text="Hora"/>
+                    </Column>                
+                    <Column id="colMesa">
+                        <Label id="lblMesa" text="Mesa"/>
+                    </Column>
+                    <Column id="colMozo">
+                        <Label id="lblMozo" text="Mozo"/>
+                    </Column>
+                    <Column id="colMetodoPago">
+                        <Label id="lblMetodoPago" text="Método de Pago"/>
+                    </Column>
+                    <Column id="colTotal">
+                        <Label id="lblTotal" text="Total"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="collistit">
+                        <cells>
+                            <Text id="txtFecha" text="{facturas>Fecha}"/>
+                            <Text id="txtHora" text="{facturas>Hora}"/>
+                            <Text id="txtMesa" text="{facturas>Mesa}"/>
+                            <Text id="txtMozo" text="{facturas>Mozo}"/>
+                            <Text id="txtMetodoPago" text="{facturas>NombreMetodoPago}"/>
+                            <Text id="txtTotal" text="${facturas>Total}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

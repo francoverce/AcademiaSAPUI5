@@ -1,0 +1,218 @@
+.background-with-opacity {
+    /* background-image: url('https://i.pinimg.com/originals/0f/fa/ca/0ffaca15fe7795947c38bcd086bc7f3e.jpg'); */
+    /* background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-coffee-shop-poster-background-material-image_155518.jpg'); */
+    background-image: url('https://www.krion.com/uploads/tmp/paredes_de_cafeteria_selva.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.background-with-opacity::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.33);
+}
+
+.background-with-opacity2 {
+    background-image: url('https://as1.ftcdn.net/v2/jpg/02/05/25/70/1000_F_205257006_Y3QuSo7tGtrh5x0L8qiSRJWwwGNNTMor.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.background-with-opacity2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+.screen-container {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 10%;
+}
+
+.btn-container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.menu-container {
+    justify-content: center;
+    align-items: flex-start;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    height: 250px;
+    padding-left: 50px;
+}
+
+.btn-menu {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.label {
+    color: white;
+}
+
+.navContainerControl {
+	border-color: #888;
+	border-style: solid;
+	border-width: 0.0625em;
+}
+
+.item-container {
+    flex-direction: row;
+    padding: 50px;
+}
+
+.imgItem  {
+    width: 250px;
+}
+
+.title-text {
+    font-size: large;
+    font-weight: bold;
+}
+
+.subtitle-text {
+    font-size: medium;
+}
+
+.finalizar-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.detalle-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.white-text {
+    color: white;
+}
+
+.item-description {
+    justify-content: flex-start;
+    padding: 25px;
+}
+
+.icon {
+    padding: 5px;
+}
+
+.factura-item-table {
+    padding: 10px;
+    padding-top: 10px;
+    height: 450px;
+}
+
+.padded-box {
+    padding: 10px;
+    padding-top: 10px;
+}
+
+.padded-table {
+    padding-top: 65px;
+}
+
+.border-radius {
+    border-radius: 10px;
+}
+
+.total-txt {
+    font-size: 28px;
+}
+
+.subtitle-txt {
+    font-size: 18px;
+}
+
+.white-box-opacity {
+    background-color: rgba(255, 255, 255, 0.66);
+    height: 560px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.light-brown-box {
+    background-color: #FAEED1;
+}
+
+.dark-brown-box {
+    background-color: #DEAC80;
+}
+
+.myCustomButton {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 10px 24px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.myCustomButton:hover {
+    background-color: #45a049;
+}
+
+.segmented-button {
+    width: 500px;
+}
+
+.dialog {
+    width: 550px;
+}
+
+.customVBox {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.customVBox .sapMToolbar {
+    margin-bottom: 10px;
+}
+
+.customVBox .sapMImage {
+    margin: 10px;
+}
+
+.customVBox .sapMText {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.customVBox .sapMHBox {
+    margin-top: 20px;
+}
+
+.iconClose {
+    margin: 10px;
+    size: "1.5rem",
+}
+
+.iconSuccess {
+    margin: 10px;
+    size: "1.5rem",
+}
